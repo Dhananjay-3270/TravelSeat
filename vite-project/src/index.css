@@ -6,12 +6,4 @@ body {
   max-height: 100vh;
   overflow-x: hidden; /* prevent horizontal scroll */
 }
-#root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1200px; /* or any max width you prefer */
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-}
+
