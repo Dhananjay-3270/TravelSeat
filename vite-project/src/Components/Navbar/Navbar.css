@@ -1,0 +1,53 @@
+.bus-logo {
+  width: 5rem;
+  height: 4rem;
+  cursor: pointer;
+  object-fit: cover; /* Ensure image fits the area */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+height: 5rem;
+  background-color: #fff; /* Solid background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem; /* Space between nav items */
+}
+
+.nav-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.5rem; /* Space between icon and text */
+  color: var(--primary-color); /* Change icon color to match theme */
+}
+
+.nav-link,
+.nav-link-active,
+.nav-account-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1rem; /* Increase padding for better spacing */
+  border-radius: 0.5rem; /* Rounded corners */
+  margin-right: 1rem; /* Space between links */
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.nav-link:hover,
+.nav-account-link:hover {
+  background-color: rgba(155, 10, 10, 0.1); /* Light background on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.nav-link-active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}

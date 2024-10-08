@@ -1,0 +1,67 @@
+.hero-section {
+  background-image: url("https://s3.rdbuz.com/images/webplatform/india/Homepage-header-800.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  padding: 2rem;
+}
+
+.select-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.select {
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  outline: none;
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  transition: border 0.3s;
+}
+
+.select:focus {
+  border: 1px solid var(--primary-color);
+}
+
+.to-bus {
+  width: 30px;
+  height: 30px;
+  margin: 0 0.5rem;
+}
+
+.search-result {
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.search-result-btn {
+  width: 50%;
+  height: 45px;
+  background-color: rgb(155, 10, 10);
+  border-radius: 10%;
+  border: none;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-result-btn:hover {
+  background-color: rgb(120, 10, 10);
+  transform: translateY(-2px);
+}

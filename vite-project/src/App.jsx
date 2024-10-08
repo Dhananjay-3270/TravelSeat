@@ -1,9 +1,8 @@
-// import React from "react";
 
 import "./App.css";
 
-import Booking from "./Components/Booking";
-import Navbar from "./Components/Navbar";
+import Booking from "./Components/Booking/Booking";
+import Navbar from "./Components/Navbar/Navbar";
 function App() {
   return (
     <>

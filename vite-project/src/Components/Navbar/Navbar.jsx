@@ -1,6 +1,6 @@
 // import React from "react";
 import { FaBusSimple } from "react-icons/fa6";
-import busLogo from "../assets/bus.jpg";
+import busLogo from "../../assets/bus.jpg";
 import "./Navbar.css";
 
 export const Navbar = () => {
@@ -9,11 +9,7 @@ export const Navbar = () => {
       <nav>
         <div className="navbar">
           <div>
-            <img
-              src={busLogo}
-              alt="Bus Logo"
-              className="bus-logo" // Move inline style to CSS
-            />
+            <img src={busLogo} alt="Bus Logo" className="bus-logo" />
           </div>
 
           <ul className="nav-list">

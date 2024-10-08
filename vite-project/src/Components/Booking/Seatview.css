@@ -1,0 +1,41 @@
+/* Same as your original CSS */
+.seat-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seat-grid {
+  width: 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  grid-template-rows: repeat(2, 60px);
+  gap: 5px;
+  background-color: rgb(235, 229, 221);
+}
+
+.seat-grid div {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.Single-seat {
+  cursor: not-allowed;
+}
+.seat-grid div:hover {
+  background-color: #8ecae6;
+  transform: scale(1.1);
+  border-color: #219ebc;
+}
+
+.seat-icon {
+  width: 80%;
+  height: auto;
+}

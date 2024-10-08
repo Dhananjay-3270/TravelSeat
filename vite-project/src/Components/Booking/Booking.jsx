@@ -1,9 +1,8 @@
-// import React from "react";
 import "./Booking.css";
-import Tobus from "../assets/To_bus.png";
-import Frombus from "../assets/From Bus.png";
+import Tobus from "../../assets/To_bus.png";
+import Frombus from "../../assets/From Bus.png";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
-
+import Seatview from "./Seatview";
 export const Booking = () => {
   return (
     <>
@@ -35,6 +34,7 @@ export const Booking = () => {
           </div>
         </div>
       </div>
+      <Seatview />
     </>
   );
 };
