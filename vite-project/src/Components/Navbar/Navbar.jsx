@@ -2,8 +2,11 @@
 import { FaBusSimple } from "react-icons/fa6";
 import busLogo from "../../assets/bus.jpg";
 import "./Navbar.css";
-
+import { useContext } from "react";
+import { datacontext } from "../../App";
 export const Navbar = () => {
+  const data = useContext(datacontext)
+ 
   return (
     <>
       <nav>
