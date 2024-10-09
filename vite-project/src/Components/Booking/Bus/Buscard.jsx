@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { busdata } from "./../../../Data/db";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -6,17 +6,22 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import bus from "../../../assets/MSRTC BUS VECTOR.jpg";
 import Seatview from "../Seatview";
 import "./Buscard.css";
-const Buscard = ({data}) => {
-  console.log(data)
-  const [Busid, setBusid] = useState();
-  const [seatview, showSeatview] = useState(false);
+
+const Buscard = ({ showbus, setShowbus }) => {
+  const seatref = useRef(null);
+  const [Busid, setBusid] = useState(0);
+  const [seatview, setSeatview] = useState(false);
+
   const handleseats = (id) => {
     setBusid(id);
-    showSeatview(true);
+    setSeatview(true);
+    setTimeout(() => {
+      seatref.current.scrollIntoView({ behavior: "smooth" });
+    }, 300);
   };
+
   return (
     <>
       <div className="bus-card-container">
@@ -47,7 +52,7 @@ const Buscard = ({data}) => {
           </div>
         ))}
       </div>
-      {showSeatview && <Seatview data={busdata.Busid.seats} />}
+      <div ref={seatref}>{seatview && <Seatview id={Busid} />}</div>
     </>
   );
 };

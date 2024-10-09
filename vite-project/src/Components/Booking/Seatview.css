@@ -1,6 +1,6 @@
-/* Same as your original CSS */
 .seat-view-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -26,8 +26,13 @@
 
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.Single-seat {
+.Single-seatfalse {
   cursor: not-allowed;
+  filter: blur(1px);
+}
+.Double-seatfalse {
+  cursor: not-allowed;
+  filter: blur(1px);
 }
 .seat-grid div:hover {
   background-color: #8ecae6;
