@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { busdata } from "./../../../Data/db";
+import { useContext, useState, useRef } from "react";
+import datacontext from "../../../Context";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,7 +9,10 @@ import Typography from "@mui/material/Typography";
 import Seatview from "../Seatview";
 import "./Buscard.css";
 
-const Buscard = ({ showbus, setShowbus }) => {
+const Buscard = ({ showbus, setShowbus, Routeindex }) => {
+  console.log(Routeindex)
+  const { businformation, From, Too, setFrom, setToo } =
+    useContext(datacontext);
   const seatref = useRef(null);
   const [Busid, setBusid] = useState(0);
   const [seatview, setSeatview] = useState(false);
@@ -25,7 +28,7 @@ const Buscard = ({ showbus, setShowbus }) => {
   return (
     <>
       <div className="bus-card-container">
-        {busdata.map((data) => (
+        {businformation[Routeindex].map((data) => (
           <div className="bus-card" key={data.busId}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
@@ -52,7 +55,17 @@ const Buscard = ({ showbus, setShowbus }) => {
           </div>
         ))}
       </div>
-      <div ref={seatref}>{seatview && <Seatview id={Busid} />}</div>
+      <div ref={seatref}>
+        {seatview && (
+          <Seatview
+            id={Busid}
+            seatview={seatview}
+            setSeatview={setSeatview}
+            setShowbus={setShowbus}
+            Routeindex={Routeindex}
+          />
+        )}
+      </div>
     </>
   );
 };

@@ -3,10 +3,12 @@ import "./App.css";
 import { busdata, destinations } from "./Data/db";
 import Booking from "./Components/Booking/Booking";
 import Navbar from "./Components/Navbar/Navbar";
-const datacontext = createContext();
+import datacontext from "./Context";
 function App() {
   const [businformation, setbusinformation] = useState(busdata);
   const [destination, setDestination] = useState(destinations);
+  const [From, setFrom] = useState("Please Select departure");
+  const [Too, setToo] = useState("Please Select destination");
 
   return (
     <>
@@ -16,6 +18,10 @@ function App() {
           setbusinformation,
           destination,
           setDestination,
+          From,
+          setFrom,
+          Too,
+          setToo,
         }}
       >
         <div className="container">
@@ -27,4 +33,4 @@ function App() {
   );
 }
 
-export { App, datacontext };
+export { App };
