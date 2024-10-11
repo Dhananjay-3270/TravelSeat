@@ -9,12 +9,32 @@ import datacontext from "../../Context";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 
 export const Booking = () => {
+  // State to control whether the bus list should be shown or not
   const [showbus, setShowbus] = useState(false);
+
+  // State to store the index of the selected route based on 'From' and 'Too'
   const [Routeindex, setRouteindex] = useState(0);
+
+  // Ref to scroll into view after a successful bus search
   const busSectionRef = useRef(null);
 
-  const { destination, setDestination, From, Too, setFrom, setToo, Bookingdata, setBookingdata } = useContext(datacontext);
+  // Getting data and functions from context (like selected From, Too, booking data)
+  const {
+    destination,
+    setDestination,
+    From,
+    Too,
+    setFrom,
+    setToo,
+    Bookingdata,
+    setBookingdata
+  } = useContext(datacontext);
 
+  /**
+   * Handles the search action when user clicks the search button.
+   * It checks if valid 'From' and 'Too' destinations are selected.
+   * If valid, it sets the bus route index, shows the bus list, and scrolls into the bus section.
+   */
   const handlesearch = () => {
     if (From && Too && From !== Too) {
       const route = `${From}-${Too}`;
@@ -25,10 +45,13 @@ export const Booking = () => {
         variant: "success",
         autoHideDuration: 2000,
       });
+
+      // Scroll into the bus section smoothly after a delay
       setTimeout(() => {
         busSectionRef.current.scrollIntoView({ behavior: "smooth" });
       }, 500);
     } else {
+      // Error handling: if departure or destination is not selected or are the same
       if (!From) {
         enqueueSnackbar("Please select a departure point.", {
           variant: "warning",
@@ -48,6 +71,10 @@ export const Booking = () => {
     }
   };
 
+  /**
+   * Handles the selection of the destination (Too) from the dropdown.
+   * It updates the 'Too' state and shows a notification.
+   */
   const handledestination = (event) => {
     setToo(event.target.value);
     enqueueSnackbar(`Destination set to ${event.target.value}`, {
@@ -56,6 +83,10 @@ export const Booking = () => {
     });
   };
 
+  /**
+   * Handles the selection of the departure point (From) from the dropdown.
+   * It updates the 'From' state and shows a notification.
+   */
   const handlefrom = (event) => {
     setFrom(event.target.value);
     enqueueSnackbar(`Departure point set to ${event.target.value}`, {
@@ -66,6 +97,7 @@ export const Booking = () => {
 
   return (
     <>
+      {/* Hero Section for selecting From and To destinations */}
       <div className="hero-section">
         <p className="hero-heading">
           India's No. 1 Online Bus Ticket Booking Site
@@ -74,6 +106,7 @@ export const Booking = () => {
           <i>
             <img src={Tobus} alt="To bus" className="to-bus" />
           </i>
+          {/* Dropdown for selecting the departure point (From) */}
           <select className="select" onChange={handlefrom} value={From}>
             <option value="">{From || "Please Select departure"}</option>
             {destination.map((dest, index) => (
@@ -82,7 +115,11 @@ export const Booking = () => {
               </option>
             ))}
           </select>
+          
+          {/* Arrow icon between the dropdowns */}
           <FaArrowRightArrowLeft />
+          
+          {/* Dropdown for selecting the destination (Too) */}
           <select className="select" onChange={handledestination} value={Too}>
             <option value="">{Too || "Please select a destination"}</option>
             {destination.map((dest, index) => (
@@ -94,6 +131,8 @@ export const Booking = () => {
           <i>
             <img src={Frombus} alt="From bus" className="to-bus" />
           </i>
+
+          {/* Search button to trigger the search for buses */}
           <div className="search-result">
             <button className="search-result-btn" onClick={handlesearch}>
               Search
@@ -102,13 +141,14 @@ export const Booking = () => {
         </div>
       </div>
 
+      {/* If showbus is true, display the bus card section */}
       {showbus && (
         <div ref={busSectionRef}>
           <Buscard showbus={showbus} setShowbus={setShowbus} Routeindex={Routeindex} />
         </div>
       )}
 
-      {/* Display Booking Data */}
+      {/* Display booking data if available */}
       {Bookingdata && Bookingdata.length > 0 && (
         <div className="booking-data-section">
           <h2>Your Booking Details</h2>

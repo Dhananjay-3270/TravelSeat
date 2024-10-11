@@ -11,10 +11,10 @@ const Modal = ({ show, handleClose, handleSubmit, seatdetails }) => {
     Too,
   } = useContext(datacontext);
 
-  // State to store total cost
+  // State to store total cost of the selected seats
   const [totalCost, setTotalCost] = useState(0);
 
-  // State for form data
+  // State for form data capturing user details
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -23,41 +23,44 @@ const Modal = ({ show, handleClose, handleSubmit, seatdetails }) => {
     too: Too,
   });
 
-  // State for error messages
+  // State for error messages related to form validation
   const [errors, setErrors] = useState({
     name: "",
     age: "",
     phone: "",
   });
 
-  // Function to calculate the total fare
+  // Function to calculate the total fare based on selected seats and distance
   const calculatefair = () => {
     const cal = destination.find((dest) => dest.value === From);
+    // Check if destination details are available
     if (!cal || !cal[Too]) {
       console.error("Destination details not found.");
       return 0;
     }
-    const distance = cal[Too].distance;
-    const pricePerKm = cal[Too].pricePerKm;
+    const distance = cal[Too].distance; // Get distance for the route
+    const pricePerKm = cal[Too].pricePerKm; // Get price per kilometer
 
     let total = 0;
+    // Calculate total fare based on seat types
     seatdetails.forEach((seat) => {
       if (seat.seattype === "Single") {
-        total += pricePerKm * distance;
+        total += pricePerKm * distance; // Add cost for single seat
       } else if (seat.seattype === "Double") {
-        total += pricePerKm * distance * 1.2;
+        total += pricePerKm * distance * 1.2; // Add cost for double seat with a 20% surcharge
       }
     });
 
-    return total;
+    return total; // Return the total calculated fare
   };
 
   useEffect(() => {
+    // Update total cost whenever From, Too, or seatdetails change
     const cost = calculatefair();
     setTotalCost(cost);
   }, [From, Too, seatdetails]);
 
-  // Input validation logic
+  // Input validation logic to ensure all form fields are correctly filled
   const validate = () => {
     let isValid = true;
     let tempErrors = { name: "", age: "", phone: "" };
@@ -84,24 +87,26 @@ const Modal = ({ show, handleClose, handleSubmit, seatdetails }) => {
       isValid = false;
     }
 
-    setErrors(tempErrors);
-    return isValid;
+    setErrors(tempErrors); // Update the state with any validation errors
+    return isValid; // Return validation result
   };
 
+  // Handle input changes in the form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value, // Update the respective field in formData
     }));
   };
 
+  // Handle form submission
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default form submission
     if (validate()) {
-      // Submit form data with total cost, departure (From), and destination (Too)
+      // If validation passes, submit the form data along with total cost
       handleSubmit({ ...formData, totalCost, from: From, too: Too });
-      handleClose();
+      handleClose(); // Close the modal after submission
     }
   };
 
