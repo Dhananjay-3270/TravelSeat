@@ -686,6 +686,74 @@ const busdata = [
             { "seatId": 26, "type": "Double", "isAvailable": true, "price": 300 },
 
         ]
+    }],
+    [{
+        "busId": 21,
+        "img": "https://i.pinimg.com/564x/c0/ae/52/c0ae5278624c902953e6e6a8a20a62b6.jpg",
+        "model": "Mercedes-Benz Tourismo (2+2)",
+        "seats": [
+            { "seatId": 1, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 2, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 3, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 4, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 5, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 6, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 7, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 8, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 9, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 10, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 11, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 12, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 13, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 14, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 15, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 16, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 17, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 18, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 19, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 20, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 21, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 22, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 23, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 24, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 25, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 26, "type": "Double", "isAvailable": true, "price": 300 },
+
+        ]
+    }
+        , {
+        "busId": 22,
+        "img": "https://i.pinimg.com/564x/c0/ae/52/c0ae5278624c902953e6e6a8a20a62b6.jpg",
+        "model": "Volvo A/C Sleeper (2+1)",
+        "seats": [
+            { "seatId": 1, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 2, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 3, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 4, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 5, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 6, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 7, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 8, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 9, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 10, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 11, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 12, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 13, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 14, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 15, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 16, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 17, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 18, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 19, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 20, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 21, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 22, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 23, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 24, "type": "Double", "isAvailable": true, "price": 300 },
+            { "seatId": 25, "type": "Single", "isAvailable": true, "price": 500 },
+            { "seatId": 26, "type": "Double", "isAvailable": true, "price": 300 },
+
+        ]
     }]
 ]
 
@@ -731,7 +799,8 @@ const routeKey = [
     "pune-solapur",
     "solapur-pune",
     "pune-latur",
-    "latur-pune"]
+    "latur-pune",
+    'solapur-latur']
 
 const bookingdetails = []
-export { busdata, destinations, routeKey,bookingdetails }
+export { busdata, destinations, routeKey, bookingdetails }
