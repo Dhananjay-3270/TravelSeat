@@ -9,15 +9,16 @@ import "./Seatview.css";
 const Seatview = ({ id, seatview, setSeatview, setShowbus, Routeindex }) => {
   const [showmodal, setShowmodal] = useState(false);
   const [Selectedbusid, setSelectedbusid] = useState([]);
+  const [Details, setDetails] = useState([]);
   const {
     businformation,
     setbusinformation,
     destination,
     setDestination,
     From,
-    setFrom,
     Too,
-    setToo,
+    setBookingdata,
+    resetSelection,
   } = useContext(datacontext);
 
   const handleproceedtobook = () => {
@@ -31,31 +32,39 @@ const Seatview = ({ id, seatview, setSeatview, setShowbus, Routeindex }) => {
     }
   };
 
-  const handleseat = (seatid) => {
+  const handleseat = (seatid, seattype) => {
     const demo = [...Selectedbusid];
+    const details = { seatid, seattype };
+
     if (demo.includes(seatid)) {
+      // If seat is already selected, remove it from both Selectedbusid and Details
       const index = demo.indexOf(seatid);
       demo.splice(index, 1);
       setSelectedbusid(demo);
+
+      // Remove from Details array
+      setDetails((prevDetails) =>
+        prevDetails.filter((seat) => seat.seatid !== seatid)
+      );
     } else {
+      // If seat is not selected, add to both Selectedbusid and Details
       setSelectedbusid((prev) => [...prev, seatid]);
+      setDetails((prevDetails) => [...prevDetails, details]);
     }
   };
 
   const handleSubmit = (formData) => {
-    const previousFrom = From; // Capture the previous value
-    const previousToo = Too; // Capture the previous value
+    // Clear current seat selection
+    resetSelection();
 
-    setFrom("Please Select departure"); // Set From to empty string
-    setToo("Please Select destination"); // Set Too to empty string
-
+    // Update the bus information with the newly booked seats
     const updatedBusinformation = businformation[Routeindex].map((bus) => {
       if (bus.busId === id) {
         return {
           ...bus,
           seats: bus.seats.map((seat) => {
             if (Selectedbusid.includes(seat.seatId)) {
-              return { ...seat, isAvailable: false };
+              return { ...seat, isAvailable: false }; // Mark the seat as unavailable
             }
             return seat;
           }),
@@ -63,16 +72,19 @@ const Seatview = ({ id, seatview, setSeatview, setShowbus, Routeindex }) => {
       }
       return bus;
     });
-    const newdata = JSON.parse(JSON.stringify(businformation));
+
+    // Update businformation state
+    const newdata = JSON.parse(JSON.stringify(businformation)); // Create a deep copy
     newdata[Routeindex] = updatedBusinformation;
     setbusinformation(newdata);
+
+    // Clear seat selection and close modals
     setSelectedbusid([]);
     setSeatview(false);
     setShowbus(false);
-    console.log("From after update:", From);
-    console.log("Too after update:", Too);
 
-    console.log(formData);
+    // Add the new booking to Bookingdata
+    setBookingdata((prevBookingData) => [...prevBookingData, formData]);
   };
 
   return (
@@ -88,7 +100,7 @@ const Seatview = ({ id, seatview, setSeatview, setShowbus, Routeindex }) => {
                     className={`${seat.type}-seat${
                       seat.isAvailable && !Selectedbusid.includes(seat.seatId)
                     }`}
-                    onClick={() => handleseat(seat.seatId)}
+                    onClick={() => handleseat(seat.seatId, seat.type)}
                   >
                     <img
                       className="seat-icon"
@@ -110,6 +122,7 @@ const Seatview = ({ id, seatview, setSeatview, setShowbus, Routeindex }) => {
             show={showmodal}
             handleClose={setShowmodal}
             handleSubmit={handleSubmit}
+            seatdetails={Details}
           />
         )}
       </SnackbarProvider>

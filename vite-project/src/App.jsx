@@ -4,12 +4,17 @@ import { busdata, destinations } from "./Data/db";
 import Booking from "./Components/Booking/Booking";
 import Navbar from "./Components/Navbar/Navbar";
 import datacontext from "./Context";
+import { SnackbarProvider } from "notistack";
 function App() {
   const [businformation, setbusinformation] = useState(busdata);
   const [destination, setDestination] = useState(destinations);
-  const [From, setFrom] = useState("Please Select departure");
-  const [Too, setToo] = useState("Please Select destination");
-
+  const [Bookingdata, setBookingdata] = useState([]);
+  const [From, setFrom] = useState("");
+  const [Too, setToo] = useState("");
+  const resetSelection = () => {
+    setFrom("");
+    setToo("");
+  };
   return (
     <>
       <datacontext.Provider
@@ -22,12 +27,17 @@ function App() {
           setFrom,
           Too,
           setToo,
+          resetSelection,
+          Bookingdata,
+          setBookingdata
         }}
       >
-        <div className="container">
-          <Navbar />
-          <Booking />
-        </div>
+        <SnackbarProvider>
+          <div className="container">
+            <Navbar />
+            <Booking />
+          </div>
+        </SnackbarProvider>
       </datacontext.Provider>
     </>
   );

@@ -695,30 +695,30 @@ const destinations = [
     {
         name: "Mumbai",
         value: "mumbai",
-        Pune: { distance: 150, pricePerKm: 5 },
-        Solapur: { distance: 400, pricePerKm: 4 },
-        Latur: { distance: 500, pricePerKm: 3.5 },
+        pune: { distance: 150, pricePerKm: 5 },
+        solapur: { distance: 400, pricePerKm: 4 },
+        latur: { distance: 500, pricePerKm: 3.5 },
     },
     {
         name: "Pune",
         value: "pune",
-        Mumbai: { distance: 150, pricePerKm: 5 },
-        Solapur: { distance: 250, pricePerKm: 4 },
-        Latur: { distance: 300, pricePerKm: 3.5 },
+        mumbai: { distance: 150, pricePerKm: 5 },
+        solapur: { distance: 250, pricePerKm: 4 },
+        latur: { distance: 300, pricePerKm: 3.5 },
     },
     {
         name: "Solapur",
         value: "solapur",
-        Mumbai: { distance: 400, pricePerKm: 4 },
-        Pune: { distance: 250, pricePerKm: 4 },
-        Latur: { distance: 150, pricePerKm: 3 },
+        mumbai: { distance: 400, pricePerKm: 4 },
+        pune: { distance: 250, pricePerKm: 4 },
+        latur: { distance: 150, pricePerKm: 3 },
     },
     {
         name: "Latur",
         value: "latur",
-        Mumbai: { distance: 500, pricePerKm: 3.5 },
-        Pune: { distance: 300, pricePerKm: 3.5 },
-        Solapur: { distance: 150, pricePerKm: 3 },
+        mumbai: { distance: 500, pricePerKm: 3.5 },
+        pune: { distance: 300, pricePerKm: 3.5 },
+        solapur: { distance: 150, pricePerKm: 3 },
     },
 ];
 const routeKey = [
@@ -733,5 +733,5 @@ const routeKey = [
     "pune-latur",
     "latur-pune"]
 
-
-export { busdata, destinations, routeKey }
+const bookingdetails = []
+export { busdata, destinations, routeKey,bookingdetails }

@@ -11,7 +11,7 @@ import "./Buscard.css";
 
 const Buscard = ({ showbus, setShowbus, Routeindex }) => {
   console.log(Routeindex)
-  const { businformation, From, Too, setFrom, setToo } =
+  const { businformation, From, Too, } =
     useContext(datacontext);
   const seatref = useRef(null);
   const [Busid, setBusid] = useState(0);
